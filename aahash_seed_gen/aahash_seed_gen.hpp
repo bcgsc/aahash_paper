@@ -194,7 +194,6 @@ void aahash_level_2_balance_seed()
 void aahash_level_3_balance_seed()
 {
     srand(time(NULL));
-    std::cerr << "checkpoint A" << std::endl;
 
     const int seed_num = 18;
     std::vector<int> r1(seed_num, 32);

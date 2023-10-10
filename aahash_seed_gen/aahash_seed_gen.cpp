@@ -2,7 +2,7 @@
 
 int main()
 {
-    aahash_balance_Seed();
-    aahash_level_2_balanceSeed();
-    aahash_level_3_balanceSeed();
+    aahash_balance_seed();
+    aahash_level_2_balance_seed();
+    aahash_level_3_balance_seed();
 }
