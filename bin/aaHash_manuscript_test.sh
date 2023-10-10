@@ -110,21 +110,23 @@ echo "uniformity real"
 echo "##############################################"
 aahash_test -j 48 -q 4000000 -l 250 -g 5000000 -t 100 -h 5 -u -i db.fa uniprot-reviewed_yes+AND+proteome_up000005640.singleLine.fasta
 
-
 echo "##############################################"
-echo "hashlvl1"
+echo "normalized aahash lvl 1"
 echo "##############################################"
-aahash_test -j 48 -q 1 -l 1000099 -g 5000000 -t 100 -h 5 -z -k 100 -y1 ./ > hashlvl1.txt 
+aahash_test -j 48 -q 1 -l 1000099 -g 5000000 -t 100 -z -k 100 -a 0 -y 1 ./ | tail -n +5 > aahash_normalized_hash_lvl_1.txt 
 echo "##############################################"
-echo "hashlvl2"
+echo "normalized aahash lvl 2"
 echo "##############################################"
-aahash_test -j 48 -q 1 -l 1000099 -g 5000000 -t 100 -h 5 -z -k 100 -y2 -i seqs.fa > hashlvl2.txt 
+aahash_test -j 48 -q 1 -l 1000099 -g 5000000 -t 100 -z -k 100 -a 0 -y 2 -i seqs.fa | tail -n +5 > aahash_normalized_hash_lvl_2.txt 
 echo "##############################################"
-echo "hashlvl3"
+echo "normalized aahash lvl 3"
 echo "##############################################"
-aahash_test -j 48 -q 1 -l 1000099 -g 5000000 -t 100 -h 5 -z -k 100 -y3 -i seqs.fa > hashlvl3.txt 
-
-
+aahash_test -j 48 -q 1 -l 1000099 -g 5000000 -t 100 -z -k 100 -a 0 -y 3 -i seqs.fa | tail -n +5 > aahash_normalized_hash_lvl_3.txt
+echo "##############################################"
+python box-muller.py aahash_normalized_hash_lvl_1.txt aahash_normalized_hash_lvl_2.txt aahash_normalized_hash_lvl_3.txt > aahash_box-muller_transformed_stats.txt
+python calc_hash_stats.py aahash_normalized_hash_lvl_1.txt 1000 > aahash_normalized_hash_lvl_1_stats.txt
+python calc_hash_stats.py aahash_normalized_hash_lvl_2.txt 1000 > aahash_normalized_hash_lvl_2_stats.txt
+python calc_hash_stats.py aahash_normalized_hash_lvl_3.txt 1000 > aahash_normalized_hash_lvl_3_stats.txt
 
 echo "##############################################"
 echo "RAM test k=50"
