@@ -73,8 +73,7 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
    # meson code example in meson.build
    link_args = [ '-lbtllib' ]
    executable('some_executable',
-    link_args : link_args
-  )
+    link_args : link_args)
    ```
 
 ## How to use aaHash
