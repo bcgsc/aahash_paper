@@ -4,6 +4,8 @@
 
 This repository contains the source code for aaHash, a fast hashing algorithm designed specifically for amino acid sequences. Included are the tests referenced in our publication and comprehensive usage documentation.
 
+For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
+
 ## Table of Contents
 
 * [Directory Structure](#directory-structure)
@@ -11,6 +13,7 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
 * [Installation](#installation)
 * [How to use aaHash](#how-to-use-aahash)
 * [Running the aaHash Test used in the Manuscript](#running-the-aahash-test-used-in-the-manuscript)
+* [License](#license)
 
 ## Directory Structure
 
@@ -21,7 +24,7 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
 - **scripts/**: helper scripts with installation.
 - **src/btllib/**: C++ src files for aaHash.
 
-### Dependencies
+## Dependencies
  * [GCC 7+](https://gcc.gnu.org/)
  * [meson](https://mesonbuild.com/Getting-meson.html)
  * [ninja](https://github.com/ninja-build/ninja/)
@@ -79,15 +82,13 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
 
 ## How to use aaHash
 
-# AAHashing with btllib
-
-## Setup
+### Setup
 
 ```cpp
 #include "btllib/aahash.hpp"
 ```
 
-## Level 1 Hashing
+### Level 1 Hashing
 
 Level 1 hashing provides hashing for amino acid sequences where each amino acid maps to a different hash value.
 
@@ -101,7 +102,7 @@ while (aahash.roll())// initiate and roll the hash
 }
 ```
 
-## Level 2 Hashing
+### Level 2 Hashing
 
 Level 2 hashing considers certain amino acids as equivalent based on their properties.
 
@@ -109,7 +110,7 @@ Level 2 hashing considers certain amino acids as equivalent based on their prope
 btllib::AAHash aahash(seq, h, k, 2);
 ```
 
-## Level 3 Hashing
+### Level 3 Hashing
 
 Level 3 hashing uses another level of equivalence for amino acids.
 
@@ -117,7 +118,7 @@ Level 3 hashing uses another level of equivalence for amino acids.
 btllib::AAHash aahash(seq, h, k, 3);
 ```
 
-## Multi-level Hashing with Seeds
+### Multi-level Hashing with Seeds
 
 Here, we demonstrate how to hash with multiple levels using seeds.
 
@@ -131,7 +132,7 @@ std::vector<btllib::SpacedSeed> parsed_seeds = btllib::aa_parse_seeds(seeds3);
 btllib::SeedAAHash seed_aahash(amino_alphabet, parsed_seeds, 3, amino_alphabet.size());
 ```
 
-## Compile without build system
+### Compile without build system
 ```
 g++ -isystem /path/to/btllib/install/include -L/path/to/btllib/install/lib -lbtllib foo.cpp
 ```
