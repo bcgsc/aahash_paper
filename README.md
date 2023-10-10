@@ -52,13 +52,25 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
    cd aaHash_paper
    ```
 
-3. Compile the code:
+3. Compile and install the code:
    ```
-   meson build
+   meson --prefix=/path/to/install build
+   cd build
    ninja
+   ninja install
    ```
 
-4. add export commands and variable set up
+4. Export install directory if you use a build system like meson, CMake, autoconf
+   ```
+   export CPPFLAGS="-isystem /path/to/btllib/install/include $CPPFLAGS"
+   export LDFLAGS="-L/path/to/btllib/install/lib -lbtllib $LDFLAGS"
+   # you will also have to link the library. Check build system documentation
+   # meson code example in meson.build
+   link_args = [ '-lbtllib' ]
+   executable('some_executable',
+    link_args : link_args
+  )
+   ```
 
 ## How to Use aaHash
 
@@ -78,10 +90,11 @@ Level 1 hashing provides hashing for amino acid sequences where each amino acid 
 const std::string seq = "RITMLYTIRITMLYTI";
 const unsigned k = 8 /*k-mer size*/, h = 3 /*number of hash*/;
 btllib::AAHash aahash(seq, h, k, 1); 
-aahash.roll(); // initiate and roll the hash
-std::vector<uint64_t> hashes = aahash.hashes(); // return the hashes of the current kmer
+while (aahash.roll())// initiate and roll the hash
+{ 
+   std::vector<uint64_t> hashes = aahash.hashes(); // return the hashes of the current kmer
+}
 ```
-
 
 ## Level 2 Hashing
 
@@ -110,7 +123,12 @@ std::string string_seed2 = "2222222222211111111111111111111333333333";
 std::string string_seed3 = "3333333331111111111111111111122222222222";
 std::vector<std::string> seeds  = { string_seed1, string_seed2, string_seed3 };
 std::vector<btllib::SpacedSeed> parsed_seeds = btllib::aa_parse_seeds(seeds3);
-tllib::SeedAAHash seed_aahash(amino_alphabet, parsed_seeds, 3, amino_alphabet.size());
+btllib::SeedAAHash seed_aahash(amino_alphabet, parsed_seeds, 3, amino_alphabet.size());
+```
+
+## Compile without build system
+```
+g++ -isystem /path/to/btllib/install/include -L/path/to/btllib/install/lib -lbtllib foo.cpp
 ```
 
 
@@ -120,19 +138,21 @@ tllib::SeedAAHash seed_aahash(amino_alphabet, parsed_seeds, 3, amino_alphabet.si
 
 1. To build the tests:
    ```
-   cd tests
+   meson --prefix=/path/to/install build
+   cd build
+   ninja
+   ninja install
    ```
-2. Navigate to the test directory:
+
+2. Export tests to path:
    ```
-   cd tests
+   export PATH=/path/to/install/bin:$PATH
    ```
 
 3. Execute the test script:
    ```
    bash aahash_manuscript_test.sh
    ```
-
-4. [Any additional steps or descriptions about the test]
 
 ## License
 aaHash Copyright (c) 2023 British Columbia Cancer Agency Branch. All rights reserved.
