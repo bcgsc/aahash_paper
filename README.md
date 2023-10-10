@@ -9,7 +9,7 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
 * [Directory Structure](#directory-structure)
 * [Dependencies](#dependencies)
 * [Installation](#installation)
-* [How to Use aaHash](#how-to-use-aahash)
+* [How to use aaHash](#how-to-use-aahash)
 * [Running the aaHash Test used in the Manuscript](#running-the-aahash-test-used-in-the-manuscript)
 
 ## Directory Structure
@@ -77,7 +77,7 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
   )
    ```
 
-## How to Use aaHash
+## How to use aaHash
 
 # AAHashing with btllib
 
