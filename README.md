@@ -18,12 +18,17 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
 - **aahash_test/**: Source code of the tests used to generate aaHash test results.
 - **bin/**: Scripts to run aahash_test.
 - **include/btllib/**: C++ header files for aaHash.
+- **scripts/**: helper scripts with installation.
 - **src/btllib/**: C++ src files for aaHash.
 
 ### Dependencies
  * [GCC 7+](https://gcc.gnu.org/)
  * [meson](https://mesonbuild.com/Getting-meson.html)
  * [ninja](https://github.com/ninja-build/ninja/)
+ * [python 3.9](https://www.python.org/) # For stat tests
+ * [numpy](https://numpy.org/) # For stat tests
+ * [matplotlib](https://matplotlib.org/) # For stat tests
+ * [scipy](https://scipy.org/) # For stat tests
 
 ## Installation
 
