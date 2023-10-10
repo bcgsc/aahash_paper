@@ -6,8 +6,6 @@ project('aahash_test', 'cpp', 'c',
 
 openmp_dep = dependency('openmp')
 
-
-
 compiler = meson.get_compiler('cpp')
 btllib_dep = compiler.find_library('btllib')
 
@@ -23,8 +21,19 @@ add_project_arguments(
 language : 'c'
 )
 
+btllib_include = [ include_directories('include'), include_directories('.') ]
+btllib_sources = run_command('scripts/get-files', 'src').stdout().strip().split()
 
+btllib_lib = static_library('btllib',
+                           btllib_sources,
+                           include_directories : btllib_include,
+                           install : true,
+                           install_dir : 'lib')
+
+subdir('aahash_seed_gen')
 subdir('aahash_test')
+subdir('bin')
+subdir('include')
 
 rootpath = meson.source_root()
 
