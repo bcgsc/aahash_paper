@@ -32,21 +32,21 @@ This repository contains the source code for aaHash, a fast hashing algorithm de
 
 ## Installation
 
-# Installing the newest version of aaHash via conda (highly recommended)
+### Installing the newest version of aaHash via conda (highly recommended)
 
    ```
    conda install -c bioconda -c conda-forge btllib python=3.9
    conda install -c conda-forge -c bioconda compilers meson ninja // for building the tests
    ```
 
-# Installing the version of aaHash  used in the manucsript via conda
+### Installing the version of aaHash  used in the manuscript via conda
 
    ```
    conda install -c bioconda -c conda-forge btllib=1.6.0 python=3.9
    conda install -c conda-forge -c bioconda compilers meson ninja // for building the tests
    ```
 
-# Installing aaHash from this repo (not recommended)
+### Installing aaHash from this repo (not recommended)
 1. Clone the repository:
    ```
    git clone https://github.com/bcgsc/aahash_paper.git
