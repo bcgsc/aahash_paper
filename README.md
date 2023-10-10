@@ -28,6 +28,7 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
  * [GCC 7+](https://gcc.gnu.org/)
  * [meson](https://mesonbuild.com/Getting-meson.html)
  * [ninja](https://github.com/ninja-build/ninja/)
+ * [btllib](https://github.com/bcgsc/btllib) # For manuscript tests
  * [python 3.9](https://www.python.org/) # For stat tests
  * [numpy](https://numpy.org/) # For stat tests
  * [matplotlib](https://matplotlib.org/) # For stat tests
@@ -39,14 +40,14 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 
    ```
    conda install -c bioconda -c conda-forge btllib python=3.9
-   conda install -c conda-forge -c bioconda compilers meson ninja // for building the tests
+   conda install -c conda-forge -c bioconda compilers meson ninja
    ```
 
-### Installing the version of aaHash  used in the manuscript via conda
+### Installing the version of aaHash used in the manuscript via conda
 
    ```
    conda install -c bioconda -c conda-forge btllib=1.6.0 python=3.9
-   conda install -c conda-forge -c bioconda compilers meson ninja // for building the tests
+   conda install -c conda-forge -c bioconda compilers meson ninja
    ```
 
 ### Installing aaHash from this repo (not recommended)
@@ -62,7 +63,7 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 
 3. Compile and install the code:
    ```
-   meson --prefix=/path/to/install build
+   meson --prefix=/path/to/install build #/path/to/install contains this version of aaHash even though there is another aaHash installed
    cd build
    ninja
    ninja install
@@ -144,7 +145,7 @@ g++ -isystem /path/to/btllib/install/include -L/path/to/btllib/install/lib -lbtl
 
 1. To build the tests:
    ```
-   meson --prefix=/path/to/install build
+   meson --prefix=/path/to/install build # note this uses the version of aaHash in your system
    cd build
    ninja
    ninja install
