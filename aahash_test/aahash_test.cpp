@@ -345,7 +345,7 @@ void hash_seq_aahash(const string &seq)
     }
 }
 
-void hash_seq_out(const string &seq)
+void hash_seq_out_aahash(const string &seq)
 {
 
     uint64_t hash_val = btllib::aahash_base(seq.c_str(), opt::kmer_len, opt::level);
@@ -354,6 +354,54 @@ void hash_seq_out(const string &seq)
     {
         hash_val = btllib::aahash_roll(hash_val, opt::kmer_len, seq[i - 1], seq[i - 1 + opt::kmer_len], opt::level);
         std::cout << ((long double)hash_val / (long double)std::numeric_limits<uint64_t>::max()) << std::endl;
+    }
+}
+
+void hash_seq_out_xxhash(const string &seq)
+{
+
+    uint64_t hash_val = 0;
+    for (size_t i = 0; i < seq.length() - opt::kmer_len + 1; i++)
+    {
+        string kmer = seq.substr(i, opt::kmer_len);
+        hash_val = XXH64(kmer.c_str(), opt::kmer_len, 0);
+        std::cout << ((long double)hash_val / (long double)std::numeric_limits<uint64_t>::max()) << std::endl;
+    }
+    if (hash_val)
+    {
+        ++opt::dummy; // dummy operation so compiler doesnt complain
+    }
+}
+
+void hash_seq_out_city(const string &seq)
+{
+
+    uint64_t hash_val = 0;
+    for (size_t i = 0; i < seq.length() - opt::kmer_len + 1; i++)
+    {
+        string kmer = seq.substr(i, opt::kmer_len);
+        hash_val = CityHash64(kmer.c_str(), opt::kmer_len);
+        std::cout << ((long double)hash_val / (long double)std::numeric_limits<uint64_t>::max()) << std::endl;
+    }
+    if (hash_val)
+    {
+        ++opt::dummy; // dummy operation so compiler doesnt complain
+    }
+}
+
+void hash_seq_out_murmur(const string &seq)
+{
+
+    uint64_t hash_val = 0;
+    for (size_t i = 0; i < seq.length() - opt::kmer_len + 1; i++)
+    {
+        string kmer = seq.substr(i, opt::kmer_len);
+        hash_val = MurmurHash64A(kmer.c_str(), opt::kmer_len, 0);
+        std::cout << ((long double)hash_val / (long double)std::numeric_limits<uint64_t>::max()) << std::endl;
+    }
+    if (hash_val)
+    {
+        ++opt::dummy; // dummy operation so compiler doesnt complain
     }
 }
 
@@ -759,17 +807,49 @@ void test_hash_ram(const char *file_name)
 void test_hash_print(const char *file_name)
 {
     check_file(file_name);
-    cout << "CPU time (sec) for hash algorithms for ";
     cout << "kmer=" << opt::kmer_len << "\n";
-    cout << "num_hash=" << opt::num_hash << "\n";
 
-    std::cout << "aaHash\n";
+    if (itm[opt::method] == "CityHash")
+    {
+        std::cout << "CityHash" << std::endl;
+    }
+    else if (itm[opt::method] == "MurmurHash")
+    {
+        std::cout << "MurmurHash" << std::endl;
+    }
+    else if (itm[opt::method] == "aaHash")
+    {
+        std::cout << "aaHash" << std::endl;
+    }
+    else if (itm[opt::method] == "xxHash")
+    {
+        std::cout << "xxHash" << std::endl;
+    }
 
     ifstream file_stream(file_name);
     string line;
     while (get_seq(file_stream, line))
     {
-        hash_seq_out(line);
+        if (itm[opt::method] == "CityHash")
+        {
+
+            hash_seq_out_city(line);
+        }
+        else if (itm[opt::method] == "MurmurHash")
+        {
+
+            hash_seq_out_murmur(line);
+        }
+        else if (itm[opt::method] == "aaHash")
+        {
+
+            hash_seq_out_aahash(line);
+        }
+        else if (itm[opt::method] == "xxHash")
+        {
+
+            hash_seq_out_xxhash(line);
+        }
     }
 }
 
