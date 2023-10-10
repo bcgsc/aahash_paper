@@ -8,10 +8,8 @@ import numpy as np
 def plot_qq(data, ax, label_name, show_x_label=True, show_y_label=True):
     res = stats.probplot(data, plot=ax)
 
-    # Increase fontsize and make title bold
     ax.set_title('', weight='bold', fontsize=14)
 
-    # Set x and y labels with increased fontsize and bold weight
     if show_x_label:
         ax.set_xlabel('Theoretical Quantiles', weight='bold', fontsize=12)
     else:
@@ -35,9 +33,7 @@ def main():
         raise ValueError("You must provide exactly 3 input files.")
 
     titles = ['Level 1 aaHash', 'Level 2 aaHash',
-              'Level 3 aaHash']  # Adjusted to 3 titles
-
-    # Adjusted subplot setup to 2x3
+              'Level 3 aaHash'] 
     fig, axs = plt.subplots(2, 3, figsize=(18, 8))
 
     for idx, file in enumerate(input_files):
@@ -60,19 +56,14 @@ def main():
         print(f"[{titles[idx]}] KS Test for z0: D = {D_z0}, p-value = {p_z0}")
         print(f"[{titles[idx]}] KS Test for z1: D = {D_z1}, p-value = {p_z1}")
 
-        # Logic to determine which plots should have labels removed
-        # This will remove x-axis labels for top row
-        show_x_label = False  # Remove x-axis label for top row
-        # Show y-axis label only for the first column
+        show_x_label = False
         show_y_label = True if idx == 0 else False
 
         plot_qq(z0, axs[0, idx], "Z₀", show_x_label, show_y_label)
-        # Always show x-axis label for bottom row
         plot_qq(z1, axs[1, idx], "Z₁", True, show_y_label)
 
-        # Set titles after plotting
+
         axs[0, idx].set_title(titles[idx], weight='bold', fontsize=14)
-        # subsample first 1000 values of Z0 and Z1
         z0 = np.array(z0[:1000])
         z1 = np.array(z1[:1000])
 
