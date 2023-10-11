@@ -71,8 +71,8 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 
 4. Export install directory if you use a build system like meson, CMake, autoconf
    ```
-   export CPPFLAGS="-isystem /path/to/btllib/install/include $CPPFLAGS"
-   export LDFLAGS="-L/path/to/btllib/install/lib -lbtllib $LDFLAGS"
+   export CPPFLAGS="-isystem /path/to/aahash_paper/install/include $CPPFLAGS"
+   export LDFLAGS="-L/path/to/aahash_paper/install/lib -lbtllib $LDFLAGS"
    # you will also have to link the library. Check build system documentation
    # meson code example in meson.build
    link_args = [ '-lbtllib' ]
@@ -105,7 +105,7 @@ while (aahash.roll())// initiate and roll the hash
 
 ### Level 2 Hashing
 
-Level 2 hashing considers certain amino acids as equivalent based on their properties.
+Level 2 hashing considers certain amino acids as equivalent based if their substituion score is >= 1 (see #sorted_blosum62_substitution_matrix).
 
 ```cpp
 btllib::AAHash aahash(seq, h, k, 2);
@@ -113,7 +113,7 @@ btllib::AAHash aahash(seq, h, k, 2);
 
 ### Level 3 Hashing
 
-Level 3 hashing uses another level of equivalence for amino acids.
+Level 3 hashing considers certain amino acids as equivalent based if their substituion score is >= 0 (see #sorted_blosum62_substitution_matrix).
 
 ```cpp
 btllib::AAHash aahash(seq, h, k, 3);
@@ -132,10 +132,13 @@ std::vector<std::string> seeds  = { string_seed1, string_seed2, string_seed3 };
 std::vector<btllib::SpacedSeed> parsed_seeds = btllib::aa_parse_seeds(seeds3);
 btllib::SeedAAHash seed_aahash(amino_alphabet, parsed_seeds, 3, amino_alphabet.size());
 ```
+### Sorted BLOSUM62 substitution matrix
+![Sorted BLOSUM62 substitution matrix](https://github.com/bcgsc/aahash_paper/blob/main/img/sorted_BLOSUM62.png)
+The yellow highlighted squares represent which amino acids are hashed to the same value in the level 2 hash. The blue outlined squares represent which amino acids are hashed to the same value in the level 3 hash.
 
 ### Compile without build system
 ```
-g++ -isystem /path/to/btllib/install/include -L/path/to/btllib/install/lib -lbtllib foo.cpp
+g++ -isystem /path/to/aahash_paper/install/include -L/path/to/aahash_paper/install/lib -lbtllib foo.cpp
 ```
 
 
