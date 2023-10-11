@@ -7,7 +7,7 @@ def perform_paired_ttest(pair1, pair2, pair3, pair4, pair5, pair6):
     group2 = [pair1[1], pair2[1], pair3[1], pair4[1], pair5[1], pair6[1]]
 
     # Perform paired t-test
-    t_stat, p_value = stats.ttest_rel(group1, group2)
+    t_stat, p_value = stats.ttest_rel(group1, group2, alternative='two-sided')
 
     return t_stat, p_value
 
