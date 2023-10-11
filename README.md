@@ -46,7 +46,7 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 ### Installing the version of aaHash used in the manuscript via conda
 
    ```
-   conda install -c bioconda -c conda-forge btllib=1.6.0 python=3.9
+   conda install -c bioconda -c conda-forge btllib=1.6.0 python=3.10
    conda install -c conda-forge -c bioconda compilers meson ninja
    ```
 
