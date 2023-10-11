@@ -86,7 +86,7 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 ### Setup
 
 ```cpp
-#include "btllib/aahash.hpp"
+#include <btllib/aahash.hpp>
 ```
 
 ### Level 1 Hashing
@@ -99,7 +99,7 @@ const unsigned k = 8 /*k-mer size*/, h = 3 /*number of hash*/;
 btllib::AAHash aahash(seq, h, k, 1); 
 while (aahash.roll())// initiate and roll the hash
 { 
-   std::vector<uint64_t> hashes = aahash.hashes(); // return the hashes of the current kmer
+   std::vector<uint64_t> hashes(aahash.hashes(), aahash.hashes() + h); // store the hashes of the current kmer in a vector
 }
 ```
 
