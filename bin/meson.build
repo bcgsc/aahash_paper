@@ -1,3 +1,3 @@
-install_data('aahash_manuscript_test.sh', install_dir : 'bin')
-install_data('calc_hash_stats.py', install_dir : 'bin')
-install_data('box-muller.py', install_dir : 'bin')
+scripts = [ 'aaHash_manuscript_test.sh', 'calc_hash_stats.py', 'box-muller.py', 'paired_t-test.py', 'transpose.awk' ]
+
+install_data(scripts, install_dir : 'bin')
