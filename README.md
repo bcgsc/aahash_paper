@@ -28,18 +28,18 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
  * [GCC 7+](https://gcc.gnu.org/)
  * [meson](https://mesonbuild.com/Getting-meson.html)
  * [ninja](https://github.com/ninja-build/ninja/)
- * [btllib](https://github.com/bcgsc/btllib) # For manuscript tests
- * [python 3.9](https://www.python.org/) # For stat tests
- * [numpy](https://numpy.org/) # For stat tests
- * [matplotlib](https://matplotlib.org/) # For stat tests
- * [scipy](https://scipy.org/) # For stat tests
+ * [btllib 1.6.0](https://github.com/bcgsc/btllib) # For manuscript tests
+ * [python 3.10](https://www.python.org/) # For stat tests
+ * [numpy 1.26](https://numpy.org/) # For stat tests
+ * [matplotlib 3.8](https://matplotlib.org/) # For Q-Q plots
+ * [scipy 1.11](https://scipy.org/) # For stat tests
 
 ## Installation
 
 ### Installing the newest version of aaHash via conda (highly recommended)
 
    ```
-   conda install -c bioconda -c conda-forge btllib python=3.9
+   conda install -c bioconda -c conda-forge btllib python=3.10
    conda install -c conda-forge -c bioconda compilers meson ninja
    ```
 
