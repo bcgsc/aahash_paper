@@ -33,6 +33,7 @@ def main():
             f"Results for using FPR values from {num_hashes[idx-1]} hash functions:")
         print(f"t-statistic: {t_stat}")
         print(f"p-value: {p_value}\n")
+        print('-' * 80)
 
 
 if __name__ == '__main__':
