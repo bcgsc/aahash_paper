@@ -63,7 +63,7 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 
 3. Compile and install the code:
    ```
-   meson --prefix=/path/to/install build #/path/to/install contains this version of aaHash even though there is another aaHash installed
+   meson --prefix=/path/to/aahash_paper/install/ build #/path/to/aahash_paper/install/ contains the version of aaHash contained in this repo even though there is another aaHash installed within the btllib library
    cd build
    ninja
    ninja install
