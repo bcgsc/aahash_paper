@@ -105,7 +105,7 @@ while (aahash.roll())// initiate and roll the hash
 
 ### Level 2 Hashing
 
-Level 2 hashing considers certain amino acids as equivalent based if their substituion score is >= 1 (see [here](#sorted_blosum62_substitution_matrix)).
+Level 2 hashing considers certain amino acids as equivalent based if their substituion score is >= 1 (see [here](#sorted-blosum62-substitution-matrix)).
 
 ```cpp
 btllib::AAHash aahash(seq, h, k, 2);
@@ -113,7 +113,7 @@ btllib::AAHash aahash(seq, h, k, 2);
 
 ### Level 3 Hashing
 
-Level 3 hashing considers certain amino acids as equivalent based if their substituion score is >= 0 (see [here](#sorted_blosum62_substitution_matrix)).
+Level 3 hashing considers certain amino acids as equivalent based if their substituion score is >= 0 (see [here](#sorted-blosum62-substitution-matrix)).
 
 ```cpp
 btllib::AAHash aahash(seq, h, k, 3);
