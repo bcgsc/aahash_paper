@@ -40,14 +40,14 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 
    ```
    conda install -c bioconda -c conda-forge btllib python=3.10
-   conda install -c conda-forge -c bioconda compilers meson ninja
+   conda install -c bioconda -c conda-forge compilers meson ninja
    ```
 
 ### Installing the version of aaHash used in the manuscript via conda
 
    ```
    conda install -c bioconda -c conda-forge btllib=1.6.0 python=3.10
-   conda install -c conda-forge -c bioconda compilers meson ninja
+   conda install -c bioconda -c conda-forge compilers meson ninja
    ```
 
 ### Installing aaHash from this repo (not recommended)
