@@ -19,7 +19,7 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
 
 - **aahash_seed_gen/**: Source code to generate the aaHash hash values for each amino acid.
 - **aahash_test/**: Source code of the tests used to generate aaHash test results.
-- **bin/**: Scripts to run aahash_test.
+- **bin/**: Scripts to run aahash_test and stat tests.
 - **include/btllib/**: C++ header files for aaHash.
 - **scripts/**: helper scripts with installation.
 - **src/btllib/**: C++ src files for aaHash.
