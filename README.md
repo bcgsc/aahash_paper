@@ -129,7 +129,7 @@ std::string string_seed1 = "1111111111111111111122222222222333333333";
 std::string string_seed2 = "2222222222211111111111111111111333333333";
 std::string string_seed3 = "3333333331111111111111111111122222222222";
 std::vector<std::string> seeds  = { string_seed1, string_seed2, string_seed3 };
-std::vector<btllib::SpacedSeed> parsed_seeds = btllib::aa_parse_seeds(seeds3);
+std::vector<btllib::SpacedSeed> parsed_seeds = btllib::aa_parse_seeds(seeds);
 btllib::SeedAAHash seed_aahash(amino_alphabet, parsed_seeds, 3, amino_alphabet.size());
 ```
 ### Sorted BLOSUM62 substitution matrix
