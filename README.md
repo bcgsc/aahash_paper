@@ -161,6 +161,8 @@ g++ -isystem /path/to/aahash_paper/install/include -L/path/to/aahash_paper/insta
 
 3. Execute the test script:
    ```
+   cd .. # out of build
+   cd bin
    bash aahash_manuscript_test.sh
    ```
 
