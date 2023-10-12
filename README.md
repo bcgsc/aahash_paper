@@ -69,11 +69,11 @@ For the latest version of aaHash, please visit https://github.com/bcgsc/btllib.
    ninja install
    ```
 
-4. Export install directory if you use a build system like meson, CMake, autoconf
+4. Export install directory if you use a build system like meson, CMake, and autoconf.
    ```
    export CPPFLAGS="-isystem /path/to/aahash_paper/install/include $CPPFLAGS"
    export LDFLAGS="-L/path/to/aahash_paper/install/lib -lbtllib $LDFLAGS"
-   # you will also have to link the library. Check build system documentation
+   # you may also have to link the library. Consult build system documentation
    # meson code example in meson.build
    link_args = [ '-lbtllib' ]
    executable('some_executable',
