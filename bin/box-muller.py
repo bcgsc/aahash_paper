@@ -69,12 +69,15 @@ def main():
 
         corr_coefficient, _ = stats.pearsonr(z0, z1)
         print(
-            f"File: {file} - Pearson correlation coefficient between z0 and z1: {corr_coefficient}")
+            f"[{titles[idx]}] Pearson correlation coefficient between z0 and z1: {corr_coefficient}")
+
+        se_r = math.sqrt((1 - corr_coefficient**2) / (1000 - 2))
+        print(f"[{titles[idx]}] Standard error of Pearson correlation coefficient: {se_r:.3f}")
 
         W_z0, p_z0 = stats.shapiro(z0[:5000])
         W_z1, p_z1 = stats.shapiro(z1[:5000])
-        print(f"File: {file} - Shapiro-Wilk W for z0: {W_z0}, p-value: {p_z0}")
-        print(f"File: {file} - Shapiro-Wilk W for z1: {W_z1}, p-value: {p_z1}")
+        print(f"[{titles[idx]}] Shapiro-Wilk W for z0: {W_z0}, p-value: {p_z0}")
+        print(f"[{titles[idx]}] Shapiro-Wilk W for z1: {W_z1}, p-value: {p_z1}")
         print('-' * 80)
 
     plt.tight_layout()
